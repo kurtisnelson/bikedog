@@ -30,8 +30,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-geolocated": "^3.1.0",
-    "react-helmet": "^6.1.0",
-    "soda-js": "^0.2.3"
+    "react-helmet": "^6.1.0"
   },
   "devDependencies": {
     "prettier": "^2.2.1"
