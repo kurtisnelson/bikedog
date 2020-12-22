@@ -54,7 +54,7 @@ export default class Closest extends React.Component {
           <p>Your closest parks are:</p>
           <ul>
             {parks.map(park => (
-              <li>{park.map_label}</li>
+              <li key={park.globalid}>{park.map_label}</li>
             ))}
           </ul>
           <p>
