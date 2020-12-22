@@ -17,7 +17,7 @@ exports.syncParks = functions
     memory: "128MB",
   })
   .pubsub.schedule("45 23 * * 6")
-  .timeZone("etc/UTC")
+  .timeZone("Etc/UTC")
   .onRun(context => {
     const bulk = db.bulkWriter()
 
