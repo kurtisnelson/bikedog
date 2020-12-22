@@ -1,5 +1,4 @@
 import React from "react"
-import soda from "soda-js"
 
 export default class Closest extends React.Component {
   state = {
@@ -7,36 +6,8 @@ export default class Closest extends React.Component {
     isLoaded: false,
     parks: [],
   }
-  componentDidMount() {
-    var consumer = new soda.Consumer("data.sfgov.org", {
-      apiToken: "KaDAqjsP0wawPPnQ6QQQbX9Gv",
-    })
 
-    consumer
-      .query()
-      .withDataset("gtr9-ntp6")
-      .where(
-        "within_circle(shape, " +
-          this.props.lat +
-          ", " +
-          this.props.lng +
-          ", 1000)"
-      )
-      .limit(5)
-      .getRows()
-      .on("success", rows => {
-        this.setState({
-          isLoaded: true,
-          parks: rows,
-        })
-      })
-      .on("error", error => {
-        this.setState({
-          isLoaded: true,
-          error,
-        })
-      })
-  }
+  componentDidMount() {}
 
   render() {
     const { error, isLoaded, parks } = this.state
