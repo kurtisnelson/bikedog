@@ -1,2 +1,2 @@
 import "firebase/firestore"
-import "firebase/performance";
+import "firebase/performance"

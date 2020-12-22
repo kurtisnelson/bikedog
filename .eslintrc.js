@@ -23,4 +23,9 @@ module.exports = {
       files: ["src/*.jsx", "src/*.js"],
     },
   ],
+  settings: {
+    react: {
+      version: "detect",
+    },
+  },
 }
