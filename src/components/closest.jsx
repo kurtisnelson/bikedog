@@ -11,6 +11,7 @@ class Closest extends React.Component {
       isLoaded: false,
       parks: [],
     }
+    this.analytics = firebase.analytics()
     this.db = firebase.firestore()
     this.db.enablePersistence()
   }
@@ -41,6 +42,7 @@ class Closest extends React.Component {
     this.fetchNearby(this.props.lat, this.props.lng, this.props.parkRadiusKm)
       .then(parks => {
         this.setState({ parks: parks, isLoaded: true })
+        this.analytics.logEvent("found_nearby_parks", { count: parks.size })
       })
       .catch(error => {
         this.setState({ error: error })

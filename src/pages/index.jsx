@@ -7,6 +7,7 @@ class Home extends React.Component {
     super(props)
   }
   useEffect() {
+    firebase.analytics()
     const remoteConfig = firebase.remoteConfig()
     remoteConfig.defaultConfig = {
       park_radius_km: 0.5,
