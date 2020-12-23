@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: "Closest Park",
+    title: "BikeDog",
   },
   plugins: [
     "gatsby-plugin-emotion",
@@ -16,16 +16,8 @@ module.exports = {
           storageBucket: "closest-park-sf.appspot.com",
           messagingSenderId: "934785812551",
           appId: "1:934785812551:web:fe657c88028eaed71d0962",
-          measurementId: "G-C251SRX7VC",
+          measurementId: "G-4C5SQHQFG0",
         },
-      },
-    },
-    {
-      resolve: `gatsby-plugin-google-gtag`,
-      options: {
-        trackingIds: [
-          "GA-256859393", // Google Analytics / GA
-        ],
       },
     },
     {

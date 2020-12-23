@@ -77,14 +77,14 @@ class Closest extends React.Component {
     const promises = []
 
     // TODO: Figure out why the Firestore example for geohash search is broken.
-    //for (const b of bounds) {
+    // for (const b of bounds) {
     const q = this.db.collection("parks").orderBy("geohash")
-    //.startAt(b[0])
-    //.endAt(b[1])
+    // .startAt(b[0])
+    // .endAt(b[1])
 
-    //console.log("query: " + b[0] + " " + b[1])
+    // console.log("query: " + b[0] + " " + b[1])
     promises.push(q.get())
-    //}
+    // }
 
     // Collect all the query results together into a single list
     return Promise.all(promises)
@@ -113,7 +113,7 @@ class Closest extends React.Component {
       })
       .then(docs => {
         const parks = []
-        for (let [id, park] of docs.entries()) {
+        for (const [id, park] of docs.entries()) {
           parks.push({ id: id, data: park })
         }
         return parks
