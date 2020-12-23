@@ -17,7 +17,9 @@ module.exports = {
     ecmaVersion: 2018,
   },
   plugins: ["react"],
-  rules: {},
+  rules: {
+    "require-jsdoc": 0,
+  },
   overrides: [
     {
       files: ["src/*.jsx", "src/*.js"],
