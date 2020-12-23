@@ -24,7 +24,11 @@ class Closest extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.lat !== this.props.lat || prevProps.lng !== this.props.lng) {
+    if (
+      prevProps.lat !== this.props.lat ||
+      prevProps.lng !== this.props.lng ||
+      prevProps.parkRadiusKm !== this.props.parkRadiusKm
+    ) {
       this.fetchParks()
     }
   }
@@ -73,18 +77,18 @@ class Closest extends React.Component {
   fetchNearby(lat, lng, radiusInKm) {
     const center = [lat, lng]
 
-    const bounds = geohashQueryBounds(center, radiusInKm)
+    const bounds = geohashQueryBounds(center, radiusInKm * 1000)
     const promises = []
 
-    // TODO: Figure out why the Firestore example for geohash search is broken.
-    // for (const b of bounds) {
-    const q = this.db.collection("parks").orderBy("geohash")
-    // .startAt(b[0])
-    // .endAt(b[1])
+    for (const b of bounds) {
+      const q = this.db
+        .collection("parks")
+        .orderBy("geohash")
+        .startAt(b[0])
+        .endAt(b[1])
 
-    // console.log("query: " + b[0] + " " + b[1])
-    promises.push(q.get())
-    // }
+      promises.push(q.get())
+    }
 
     // Collect all the query results together into a single list
     return Promise.all(promises)
