@@ -12,12 +12,14 @@ class Parks extends React.Component {
     }
   }
 
-  static get propTypeS() {
+  static get propTypes() {
     return {
-      coords: {
+      coords: PropTypes.shape({
         latitude: PropTypes.number,
         longitude: PropTypes.number,
-      },
+      }),
+      isGeolocationAvailable: PropTypes.bool,
+      isGeolocationEnabled: PropTypes.bool,
     }
   }
 
@@ -38,8 +40,7 @@ class Parks extends React.Component {
           <div>Geolocation is not enabled.</div>
         ) : this.props.coords ? (
           <Closest
-            lat={this.props.coords.latitude}
-            lng={this.props.coords.longitude}
+            userLoc={{lat: this.props.coords.latitude, lng: this.props.coords.longitude}}
             parkRadiusKm={this.state.parkRadiusKm}
           />
         ) : (
