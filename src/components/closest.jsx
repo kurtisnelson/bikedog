@@ -19,6 +19,7 @@ class Closest extends React.Component {
     return {
       lat: PropTypes.number,
       lng: PropTypes.number,
+      parkRadiusKm: PropTypes.number,
     }
   }
 
@@ -33,7 +34,7 @@ class Closest extends React.Component {
   }
 
   fetchParks() {
-    this.fetchNearby(this.props.lat, this.props.lng)
+    this.fetchNearby(this.props.lat, this.props.lng, this.props.parkRadiusKm)
       .then(parks => {
         this.setState({ parks: parks, isLoaded: true })
       })
@@ -69,9 +70,8 @@ class Closest extends React.Component {
     }
   }
 
-  fetchNearby(lat, lng) {
+  fetchNearby(lat, lng, radiusInKm) {
     const center = [lat, lng]
-    const radiusInKm = 0.5
 
     const bounds = geohashQueryBounds(center, radiusInKm)
     const promises = []
