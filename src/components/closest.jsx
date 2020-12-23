@@ -1,6 +1,7 @@
 import React from "react"
 import { distanceBetween, geohashQueryBounds } from "geofire-common"
 import PropTypes from "prop-types"
+import Park from "../components/park"
 import firebase from "gatsby-plugin-firebase"
 
 class Closest extends React.Component {
@@ -18,16 +19,17 @@ class Closest extends React.Component {
 
   static get propTypes() {
     return {
-      lat: PropTypes.number,
-      lng: PropTypes.number,
+      userLoc: PropTypes.shape({
+        lat: PropTypes.number,
+        lng: PropTypes.number,
+      }).isRequired,
       parkRadiusKm: PropTypes.number,
     }
   }
 
   componentDidUpdate(prevProps) {
     if (
-      prevProps.lat !== this.props.lat ||
-      prevProps.lng !== this.props.lng ||
+      prevProps.userLoc !== this.props.userLoc ||
       prevProps.parkRadiusKm !== this.props.parkRadiusKm
     ) {
       this.fetchParks()
@@ -39,7 +41,7 @@ class Closest extends React.Component {
   }
 
   fetchParks() {
-    this.fetchNearby(this.props.lat, this.props.lng, this.props.parkRadiusKm)
+    this.fetchNearby(this.props.userLoc, this.props.parkRadiusKm)
       .then(parks => {
         this.setState({ parks: parks, isLoaded: true })
         this.analytics.logEvent("found_nearby_parks", { count: parks.size })
@@ -56,7 +58,7 @@ class Closest extends React.Component {
     } else if (!isLoaded) {
       return (
         <div>
-          Finding parks near {this.props.lat},{this.props.lng}
+          Finding parks near {this.props.userLoc.lat},{this.props.userLoc.lng}
         </div>
       )
     } else {
@@ -65,19 +67,26 @@ class Closest extends React.Component {
           <p>Your closest parks are:</p>
           <ul>
             {parks.map(park => (
-              <li key={park.id}>{park.data.map_label}</li>
+              <li key={park.id}>
+                <Park
+                  id={park.id}
+                  data={park.data}
+                  userLoc={this.props.userLoc}
+                />
+              </li>
             ))}
           </ul>
           <p>
-            Using {this.props.lat}, {this.props.lng} as your location.
+            Using {this.props.userLoc.lat}, {this.props.userLoc.lng} as your
+            location.
           </p>
         </div>
       )
     }
   }
 
-  fetchNearby(lat, lng, radiusInKm) {
-    const center = [lat, lng]
+  fetchNearby(userLoc, radiusInKm) {
+    const center = [userLoc.lat, userLoc.lng]
 
     const bounds = geohashQueryBounds(center, radiusInKm * 1000)
     const promises = []
