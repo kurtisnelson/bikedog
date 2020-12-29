@@ -5,8 +5,19 @@ module.exports = {
   plugins: [
     "gatsby-plugin-emotion",
     "gatsby-plugin-react-helmet",
-    "gatsby-plugin-offline",
     "gatsby-plugin-layout",
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `BikeDog`,
+        short_name: `BikeDog`,
+        start_url: `/`,
+        background_color: `#f7f0eb`,
+        theme_color: `#a2466c`,
+        display: `standalone`,
+        icon: `src/images/icon.png`,
+      },
+    },
     {
       resolve: "gatsby-plugin-firebase",
       options: {
@@ -44,5 +55,6 @@ module.exports = {
         },
       },
     },
+    "gatsby-plugin-offline",
   ],
 }

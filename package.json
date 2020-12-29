@@ -25,6 +25,7 @@
     "gatsby-plugin-emotion": "^5.1.0",
     "gatsby-plugin-firebase": "^0.2.0-beta.4",
     "gatsby-plugin-layout": "^1.7.0",
+    "gatsby-plugin-manifest": "^2.9.1",
     "gatsby-plugin-offline": "^3.7.0",
     "gatsby-plugin-prettier-eslint": "^1.0.4",
     "gatsby-plugin-react-helmet": "^3.7.0",
