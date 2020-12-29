@@ -6,6 +6,7 @@ module.exports = {
     "gatsby-plugin-emotion",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-offline",
+    "gatsby-plugin-layout",
     {
       resolve: "gatsby-plugin-firebase",
       options: {

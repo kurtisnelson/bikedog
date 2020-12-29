@@ -33,7 +33,7 @@ class Parks extends React.Component {
     return (
       <div>
         <h2>Your Parks</h2>
-        <p>Find your 10-minute parks to you in San Francisco.</p>
+        <p>Find parks within a 10 minute walk in San Francisco.</p>
         {!this.props.isGeolocationAvailable ? (
           <div>Your browser does not support Geolocation.</div>
         ) : !this.props.isGeolocationEnabled ? (
@@ -47,7 +47,7 @@ class Parks extends React.Component {
             parkRadiusKm={this.state.parkRadiusKm}
           />
         ) : (
-          <div>Fetching location</div>
+          <div>Fetching location...</div>
         )}
       </div>
     )
