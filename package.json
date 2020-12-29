@@ -1,5 +1,5 @@
 {
-  "name": "closest-park",
+  "name": "bikedog",
   "version": "1.0.0",
   "private": true,
   "description": "Closest Park",
@@ -46,6 +46,13 @@
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^7.1.0",
     "eslint-plugin-react": "^7.21.5",
+    "git-format-staged": "^2.1.0",
+    "husky": "^4.3.6",
     "prettier": "^2.2.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "git-format-staged -f 'prettier --ignore-unknown --stdin --stdin-filepath \"{}\"' ."
+    }
   }
 }
