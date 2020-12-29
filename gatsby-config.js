@@ -7,7 +7,14 @@ module.exports = {
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-layout",
     "gatsby-plugin-loadable-components-ssr",
-    `gatsby-theme-material-ui`,
+    "gatsby-theme-material-ui",
+    {
+      resolve: "gatsby-plugin-i18n",
+      options: {
+        langKeyDefault: "en",
+        useLangKeyLayout: false,
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
