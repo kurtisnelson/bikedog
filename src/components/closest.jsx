@@ -44,7 +44,7 @@ class Closest extends React.Component {
     this.fetchNearby(this.props.userLoc, this.props.parkRadiusKm)
       .then(parks => {
         this.setState({ parks: parks, isLoaded: true })
-        this.analytics.logEvent("found_nearby_parks", { count: parks.size })
+        this.analytics.logEvent("found_nearby_parks", { parks: parks.size })
       })
       .catch(error => {
         this.setState({ error: error })
