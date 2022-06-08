@@ -41,7 +41,7 @@
     "geofire-common": "^5.2.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "react-geolocated": "^3.1.0",
+    "react-geolocated": "^4.0.1",
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
@@ -51,7 +51,7 @@
     "eslint-plugin-react": "^7.30.0",
     "eslint-plugin-react-hooks": "^4.5.0",
     "git-format-staged": "^3.0.0",
-    "husky": "^7.0.4",
+    "husky": "^8.0.1",
     "prettier": "^2.6.2"
   },
   "husky": {
